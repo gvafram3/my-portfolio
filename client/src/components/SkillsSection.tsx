@@ -8,22 +8,39 @@ export default function SkillsSection() {
   const skillCategories = [
     {
       category: "Programming Languages",
-      skills: ["Dart", "JavaScript", "HTML/CSS"],
+      skills: [
+        { name: "Dart", level: 95 },
+        { name: "JavaScript", level: 75 },
+        { name: "HTML/CSS", level: 85 },
+      ],
       icon: Code2,
     },
     {
       category: "Frameworks & Tools",
-      skills: ["Flutter", "Firebase Auth", "Firestore", "Riverpod", "Git/GitHub"],
+      skills: [
+        { name: "Flutter", level: 95 },
+        { name: "Firebase", level: 85 },
+        { name: "Riverpod", level: 90 },
+        { name: "Git/GitHub", level: 80 },
+      ],
       icon: Wrench,
     },
     {
       category: "UI/UX Design",
-      skills: ["Responsive Design", "FL Chart", "Google Fonts", "Material Design"],
+      skills: [
+        { name: "Responsive Design", level: 90 },
+        { name: "FL Chart", level: 85 },
+        { name: "Material Design", level: 90 },
+      ],
       icon: Palette,
     },
     {
       category: "Other Skills",
-      skills: ["Microsoft Office", "Project Planning", "Problem Solving", "Teamwork"],
+      skills: [
+        { name: "Problem Solving", level: 95 },
+        { name: "Project Planning", level: 80 },
+        { name: "Teamwork", level: 90 },
+      ],
       icon: Briefcase,
     },
   ];

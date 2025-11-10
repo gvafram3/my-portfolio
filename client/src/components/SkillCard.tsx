@@ -1,10 +1,16 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
 import { LucideIcon } from "lucide-react";
+
+interface Skill {
+  name: string;
+  level: number; // 0-100
+}
 
 interface SkillCardProps {
   category: string;
-  skills: string[];
+  skills: Skill[];
   icon: LucideIcon;
 }
 
@@ -21,19 +27,18 @@ export default function SkillCard({ category, skills, icon: Icon }: SkillCardPro
           </h3>
         </div>
       </CardHeader>
-      <CardContent>
-        <div className="flex flex-wrap gap-2">
-          {skills.map((skill, index) => (
-            <Badge 
-              key={index} 
-              variant="secondary" 
-              className="text-sm px-3 py-1 hover:bg-primary hover:text-primary-foreground transition-colors cursor-default"
-              data-testid={`badge-skill-${skill.toLowerCase().replace(/\s+/g, '-')}`}
-            >
-              {skill}
-            </Badge>
-          ))}
-        </div>
+      <CardContent className="space-y-4">
+        {skills.map((skill, index) => (
+          <div key={index} className="space-y-2" data-testid={`skill-item-${skill.name.toLowerCase().replace(/\s+/g, '-')}`}>
+            <div className="flex justify-between items-center">
+              <span className="text-sm font-medium">{skill.name}</span>
+              <span className="text-xs text-muted-foreground">
+                {skill.level >= 90 ? "Expert" : skill.level >= 70 ? "Advanced" : skill.level >= 50 ? "Intermediate" : "Beginner"}
+              </span>
+            </div>
+            <Progress value={skill.level} className="h-2" data-testid={`progress-${skill.name.toLowerCase().replace(/\s+/g, '-')}`} />
+          </div>
+        ))}
       </CardContent>
     </Card>
   );

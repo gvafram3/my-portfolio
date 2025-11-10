@@ -3,9 +3,12 @@ import adminDashboard from "@assets/generated_images/Admin_Dashboard_App_screens
 import leaderboard from "@assets/generated_images/Leaderboard_Performance_Tracker_interface_0066fe69.png";
 import analytics from "@assets/generated_images/Progress_Analytics_Screen_interface_a7e458a5.png";
 import { useInView } from "@/hooks/use-in-view";
+import { Button } from "@/components/ui/button";
+import { useState } from "react";
 
 export default function ProjectsSection() {
   const { ref, isInView } = useInView({ threshold: 0.1 });
+  const [activeFilter, setActiveFilter] = useState("All");
 
   const projects = [
     {
@@ -34,6 +37,16 @@ export default function ProjectsSection() {
     },
   ];
 
+  const allTechnologies = Array.from(
+    new Set(projects.flatMap(p => p.technologies))
+  ).sort();
+  
+  const filters = ["All", ...allTechnologies];
+
+  const filteredProjects = activeFilter === "All" 
+    ? projects 
+    : projects.filter(p => p.technologies.includes(activeFilter));
+
   return (
     <section id="projects" className="py-24 px-4 bg-muted/30 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent pointer-events-none" />
@@ -47,12 +60,27 @@ export default function ProjectsSection() {
         <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-center bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text" data-testid="text-projects-title">
           Featured Projects
         </h2>
-        <p className="text-center text-muted-foreground mb-12 text-lg" data-testid="text-projects-subtitle">
+        <p className="text-center text-muted-foreground mb-8 text-lg" data-testid="text-projects-subtitle">
           Here are some of my recent Flutter applications
         </p>
+
+        {/* Filter Buttons */}
+        <div className="flex flex-wrap justify-center gap-2 mb-12">
+          {filters.map((filter) => (
+            <Button
+              key={filter}
+              variant={activeFilter === filter ? "default" : "outline"}
+              size="sm"
+              onClick={() => setActiveFilter(filter)}
+              data-testid={`button-filter-${filter.toLowerCase()}`}
+            >
+              {filter}
+            </Button>
+          ))}
+        </div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
+          {filteredProjects.map((project, index) => (
             <div
               key={project.id}
               className={`transition-all duration-700 ${
@@ -71,6 +99,12 @@ export default function ProjectsSection() {
             </div>
           ))}
         </div>
+
+        {filteredProjects.length === 0 && (
+          <p className="text-center text-muted-foreground mt-8" data-testid="text-no-projects">
+            No projects found for this technology.
+          </p>
+        )}
       </div>
     </section>
   );

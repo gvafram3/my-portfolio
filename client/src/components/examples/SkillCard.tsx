@@ -6,7 +6,11 @@ export default function SkillCardExample() {
     <div className="max-w-sm">
       <SkillCard 
         category="Programming Languages"
-        skills={["Dart", "JavaScript", "HTML/CSS"]}
+        skills={[
+          { name: "Dart", level: 95 },
+          { name: "JavaScript", level: 75 },
+          { name: "HTML/CSS", level: 85 }
+        ]}
         icon={Code2}
       />
     </div>
