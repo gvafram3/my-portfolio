@@ -111,17 +111,19 @@ export default function ContactSection() {
               </h3>
               <div className="space-y-3">
                 <a
-                  href="mailto:visca.afram@example.com"
+                  // href="mailto:aframviscagyebi@gmail.com"
+                  href="mailto:aframviscagyebi@gmail.com?subject=Portfolio%20Inquiry"
                   className="flex items-center gap-3 text-foreground hover-elevate p-4 rounded-lg transition-all group"
                   data-testid="link-email"
                 >
                   <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
                     <Mail className="h-5 w-5 text-primary" />
                   </div>
-                  <span className="text-sm">visca.afram@example.com</span>
+                  <span className="text-sm">aframviscagyebi@gmail.com</span>
                 </a>
                 <a
-                  href="https://linkedin.com/in/viscaafram"
+                  href="https://linkedin.com/in/visca-afram-gyebi-4a6a89332"
+                  // href="https://linkedin.com/in/viscaafram"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 text-foreground hover-elevate p-4 rounded-lg transition-all group"
@@ -133,7 +135,7 @@ export default function ContactSection() {
                   <span className="text-sm">LinkedIn Profile</span>
                 </a>
                 <a
-                  href="https://github.com/viscaafram"
+                  href="https://github.com/gvafram3"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 text-foreground hover-elevate p-4 rounded-lg transition-all group"

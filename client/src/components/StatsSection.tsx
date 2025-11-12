@@ -14,7 +14,7 @@ export default function StatsSection() {
     },
     {
       icon: Layers,
-      value: "15+",
+      value: "10+",
       label: "Projects Completed",
       description: "Across web & mobile",
     },

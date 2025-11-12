@@ -29,13 +29,13 @@ export default function SkillsSection() {
       category: "UI/UX Design",
       skills: [
         { name: "Responsive Design", level: 90 },
-        { name: "FL Chart", level: 85 },
+        // { name: "FL Chart", level: 85 },
         { name: "Material Design", level: 90 },
       ],
       icon: Palette,
     },
     {
-      category: "Other Skills",
+      category: "Soft Skills",
       skills: [
         { name: "Problem Solving", level: 95 },
         { name: "Project Planning", level: 80 },
